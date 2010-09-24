@@ -1,5 +1,8 @@
 %h1 Invoices
 
+%h2 Chiffre d'affaire
+= number_to_currency sales(@invoices)
+
 %h2 Filtres
 = link_to "Toutes les factures", invoices_path
 = link_to "2009", invoices_path(:from => "2009-01-01", :to => "2009-12-31")
