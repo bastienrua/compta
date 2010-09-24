@@ -1,4 +1,10 @@
 Compta::Application.routes.draw do
+  
+  resources :invoices
+  resources :clients do
+    resources :invoices
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +54,7 @@ Compta::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "clients#index"
 
   # See how all your routes lay out with "rake routes"
 

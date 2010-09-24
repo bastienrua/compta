@@ -1,0 +1,7 @@
+%h1 Clients#edit
+
+= semantic_form_for @client do |f|
+  = render "fields", :f => f
+  = f.buttons
+  
+= link_to "Factures de ce client", client_invoices_path(@client)

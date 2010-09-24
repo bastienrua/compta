@@ -1,0 +1,20 @@
+%h1 Invoices
+
+%table
+
+  %tr
+    %th Numéro de facture
+    %th Client
+    %th Montant HT
+    %th Montant TTC
+    %th Date de facturation
+    
+  - @invoices.each do |invoice|
+    %tr
+      %td= link_to invoice.number, edit_invoice_path(invoice)
+      %td= link_to invoice.client.name, edit_client_path(invoice.client)
+      %td= number_to_currency(invoice.amount_excl_vat)
+      %td= number_to_currency(invoice.amount_incl_vat)
+      %td= l(invoice.invoiced_on)
+      
+= link_to "Nouvelle Facture", new_invoice_path

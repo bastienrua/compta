@@ -34,6 +34,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    formtastic (1.1.0)
+      actionpack (>= 2.3.0)
+      activesupport (>= 2.3.0)
+      i18n (>= 0.4.0)
     haml (3.0.18)
     i18n (0.4.1)
     mail (2.2.6.1)
@@ -83,6 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  formtastic (~> 1.1.0)
   haml (~> 3.0.18)
   rails (= 3.0.0)
   rspec-rails (~> 2.0.0.beta.22)
