@@ -12,6 +12,7 @@ class InvoicesController < ApplicationController
     @client = Client.find_by_id params[:client_id]
     
     scope = @client ? @client.invoices : Invoice
+    scope = scope.where(:invoiced_on => (Date.parse(params[:from])..Date.parse(params[:to]))) if params[:from]
     @invoices = scope.includes(:client)
   end
   
