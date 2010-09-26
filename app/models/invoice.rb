@@ -21,6 +21,15 @@ class Invoice < ActiveRecord::Base
     
   end
   
+  # Class methods
+  ###############
+  
+  def self.sales(invoices, incl_vat = true)
+    invoices.inject(0) do |sales, invoice|
+      sales += incl_vat ? invoice.amount_incl_vat : invoice.amount_excl_vat
+    end
+  end
+  
   # Instance methods
   ##################
   

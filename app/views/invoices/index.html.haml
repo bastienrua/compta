@@ -1,7 +1,8 @@
 %h1 Factures
 
 %h2 Chiffre d'affaires
-= number_to_currency sales(@invoices)
+%p= sales @invoices, false
+%p= sales @invoices, true
 
 %h2 Filtres
 = link_to "Toutes les factures", invoices_path
