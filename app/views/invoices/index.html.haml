@@ -21,7 +21,7 @@
   - @invoices.each do |invoice|
     %tr
       %td= link_to invoice.number, edit_invoice_path(invoice)
-      %td= link_to invoice.client.name, edit_client_path(invoice.client)
+      %td= link_to invoice.client_name, edit_client_path(invoice.client)
       %td= number_to_currency(invoice.amount_excl_vat)
       %td= number_to_currency(invoice.amount_incl_vat)
       %td= l(invoice.invoiced_on)

@@ -33,6 +33,8 @@ class Invoice < ActiveRecord::Base
   # Instance methods
   ##################
   
+  delegate :name, :to => :client, :prefix => true
+  
   def amount_incl_vat
     amount_excl_vat * (1+vat)
   end
