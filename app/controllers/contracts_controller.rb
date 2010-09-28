@@ -10,6 +10,7 @@ class ContractsController < ApplicationController
   
   def index
     @contracts = Contract.includes(:client, :invoices)
+    @contracts = @contracts & Client.where(:id => params[:client_id]) if params[:client_id]
   end
 
   def new

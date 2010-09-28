@@ -5,6 +5,7 @@ Compta::Application.routes.draw do
   end
   resources :invoices
   resources :clients do
+    resources :contracts
     resources :invoices
   end
 

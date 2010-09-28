@@ -4,4 +4,5 @@
   = render "fields", :f => f
   = f.buttons
   
-= link_to "Factures de ce client", client_invoices_path(@client)
+%p= link_to "Contrats de ce client", client_contracts_path(@client)
+%p= link_to "Factures de ce client", client_invoices_path(@client)
