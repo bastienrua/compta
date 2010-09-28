@@ -21,4 +21,8 @@ class Contract < ActiveRecord::Base
     amount_excl_vat * (1+vat)
   end
   
+  def balance
+    amount_incl_vat - invoices.map(&:amount_incl_vat).sum
+  end
+  
 end

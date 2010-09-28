@@ -1,11 +1,15 @@
 %h1 Contrats
 
+%h2 Reste à Solder Global
+%p= number_to_currency(@contracts.map(&:balance).sum)
+
 %table
 
   %tr
     %th Intitulé
     %th Montant HT
     %th Montant TTC
+    %th Reste à Solder
     %th Date du contrat
     %th Client
     
@@ -14,6 +18,7 @@
       %td= link_to contract.title, edit_contract_path(contract)
       %td= number_to_currency(contract.amount_excl_vat)
       %td= number_to_currency(contract.amount_incl_vat)
+      %td= number_to_currency(contract.balance)
       %td= l(contract.issued_on)
       %td= link_to contract.client_name, edit_client_path(contract.client)
       
