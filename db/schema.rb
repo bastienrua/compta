@@ -10,13 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100927073606) do
+ActiveRecord::Schema.define(:version => 20100927173031) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "contracts", :force => true do |t|
+    t.integer  "client_id"
+    t.decimal  "amount_excl_vat"
+    t.decimal  "vat"
+    t.date     "issued_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "contracts", ["client_id"], :name => "index_contracts_on_client_id"
 
   create_table "invoices", :force => true do |t|
     t.string   "number"
@@ -27,8 +39,10 @@ ActiveRecord::Schema.define(:version => 20100927073606) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contract_id"
   end
 
   add_index "invoices", ["client_id"], :name => "index_invoices_on_client_id"
+  add_index "invoices", ["contract_id"], :name => "index_invoices_on_contract_id"
 
 end

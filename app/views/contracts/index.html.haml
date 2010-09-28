@@ -1,0 +1,20 @@
+%h1 Contrats
+
+%table
+
+  %tr
+    %th Intitulé
+    %th Montant HT
+    %th Montant TTC
+    %th Date du contrat
+    %th Client
+    
+  - @contracts.each do |contract|
+    %tr
+      %td= link_to contract.title, edit_contract_path(contract)
+      %td= number_to_currency(contract.amount_excl_vat)
+      %td= number_to_currency(contract.amount_incl_vat)
+      %td= l(contract.issued_on)
+      %td= link_to contract.client_name, edit_client_path(contract.client)
+      
+= link_to "Nouveau contrat", new_contract_path
