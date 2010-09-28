@@ -11,7 +11,7 @@ class Invoice < ActiveRecord::Base
   # Scopes
   ########
   
-  default_scope :order => :number
+  default_scope :order => "number DESC"
 
   def self.import(path)
     arrays = CSV.read(path)
