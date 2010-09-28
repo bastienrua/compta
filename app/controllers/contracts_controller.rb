@@ -9,7 +9,7 @@ class ContractsController < ApplicationController
   #########
   
   def index
-    @contracts = Contract.all
+    @contracts = Contract.includes(:client, :invoices)
   end
 
   def new
