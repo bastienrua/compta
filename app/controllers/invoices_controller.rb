@@ -21,7 +21,7 @@ class InvoicesController < ApplicationController
     end
     
     scope = scope.where(:invoiced_on => (Date.parse(params[:from])..Date.parse(params[:to]))) if params[:from]
-    @invoices = scope.includes(:client)
+    @invoices = scope.includes(:client, :contract)
   end
   
   def new

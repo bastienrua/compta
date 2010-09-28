@@ -35,6 +35,7 @@ class Invoice < ActiveRecord::Base
   ##################
   
   delegate :name, :to => :client, :prefix => true
+  delegate :title, :to => :contract, :prefix => true, :allow_nil => true
   
   def amount_incl_vat
     amount_excl_vat * (1+vat)
