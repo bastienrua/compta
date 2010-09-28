@@ -10,6 +10,8 @@
   %li= link_to "2009", invoices_path(:from => "2009-01-01", :to => "2009-12-31")
   %li= link_to "2010", invoices_path(:from => "2010-01-01", :to => "2010-12-31")
 
+%p= link_to "Nouvelle Facture", new_invoice_path
+
 %table
 
   %tr
@@ -30,5 +32,3 @@
       %td= number_to_currency(invoice.amount_excl_vat)
       %td= number_to_currency(invoice.amount_incl_vat)
       %td= l(invoice.invoiced_on)
-      
-%p= link_to "Nouvelle Facture", new_invoice_path
