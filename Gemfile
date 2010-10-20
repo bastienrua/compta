@@ -11,3 +11,7 @@ group :development do
   gem "rspec-rails", "~> 2.0.1"
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
+
+group :production do
+  gem "hassle"
+end
