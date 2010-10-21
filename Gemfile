@@ -13,5 +13,5 @@ group :development do
 end
 
 group :production do
-  gem "hassle"
+  gem "hassle", :git => "http://github.com/Papipo/hassle.git"
 end
