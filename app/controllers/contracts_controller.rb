@@ -9,7 +9,7 @@ class ContractsController < ApplicationController
   #########
   
   def index
-    @contracts = Contract.includes(:client, :invoices)
+    @contracts = Contract.includes(:client, :invoice_lines => :invoice)
     @contracts = @contracts & Client.where(:id => params[:client_id]) if params[:client_id]
   end
 

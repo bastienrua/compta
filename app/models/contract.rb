@@ -5,7 +5,7 @@ class Contract < ActiveRecord::Base
   
   belongs_to :client
 
-  has_many :invoices
+  has_many :invoice_lines
   
   # Scopes
   ########
@@ -22,7 +22,7 @@ class Contract < ActiveRecord::Base
   end
   
   def balance
-    amount_incl_vat - invoices.map(&:amount_incl_vat).sum
+    amount_incl_vat - invoice_lines.map(&:amount_incl_vat).sum
   end
   
 end
