@@ -6,9 +6,9 @@ class Invoice < ActiveRecord::Base
   #############
   
   belongs_to :client
-  belongs_to :contract
   
   has_many :lines, :class_name => "InvoiceLine"
+  has_many :contracts, :through => :lines
 
   # Scopes
   ########
