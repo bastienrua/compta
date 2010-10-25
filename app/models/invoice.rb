@@ -28,9 +28,8 @@ class Invoice < ActiveRecord::Base
   ###############
   
   def self.sales(invoices, incl_vat = true)
-    invoices.inject(0) do |sales, invoice|
-      sales += incl_vat ? invoice.amount_incl_vat : invoice.amount_excl_vat
-    end
+    method = incl_vat ? :amount_incl_vat : :amount_excl_vat
+    invoices.map(&method).sum
   end
   
   # Instance methods
@@ -39,6 +38,10 @@ class Invoice < ActiveRecord::Base
   delegate :name, :to => :client, :prefix => true
   delegate :title, :to => :contract, :prefix => true, :allow_nil => true
   
+  def amount_excl_vat
+    lines.map(&:amount_excl_vat).sum
+  end
+
   def amount_incl_vat
     amount_excl_vat * (1+vat)
   end
