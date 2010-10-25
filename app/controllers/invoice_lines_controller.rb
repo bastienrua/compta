@@ -21,9 +21,16 @@ class InvoiceLinesController < ApplicationController
   end
 
   def edit
+    @invoice_line = InvoiceLine.find params[:id]
   end
 
   def update
+    @invoice_line = InvoiceLine.find(params[:id])
+    if @invoice_line.update_attributes(params[:invoice_line])
+      redirect_to edit_invoice_path(@invoice)
+    else
+      render :edit
+    end
   end
   
   # Private methods

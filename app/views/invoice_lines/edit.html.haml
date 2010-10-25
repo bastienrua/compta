@@ -1,0 +1,5 @@
+%h1 Edition d'une ligne de facture
+
+= semantic_form_for @invoice_line, :url => invoice_line_path(@invoice) do |f|
+  = render "fields", :f => f
+  = f.buttons

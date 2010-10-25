@@ -13,11 +13,13 @@
     %th Contrat
     %th Description
     %th Montant HT
+    %th
     
   - @invoice.lines.each do |line|
     %tr
       %td contract
       %td= line.description
       %td= number_to_currency line.amount_excl_vat, :unit => "€"
+      %td= link_to "Modifier", edit_invoice_line_path(@invoice, line)
       
 = link_to "Nouvelle ligne de facture", new_invoice_line_path(@invoice)
