@@ -3,6 +3,12 @@
 %h2 Reste à Solder Global
 %p= number_to_currency(@contracts.map(&:balance).sum)
 
+%h2 Filtres
+%ul
+  %li= link_to "Toutes les contrats", contracts_path
+  %li= link_to "Soldés", contracts_path(:complete => "1")
+  %li= link_to "Non soldés", contracts_path(:incomplete => "1")
+
 %table
 
   %tr

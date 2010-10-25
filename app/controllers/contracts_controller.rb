@@ -11,6 +11,8 @@ class ContractsController < ApplicationController
   def index
     @contracts = Contract.includes(:client, :invoice_lines => :invoice)
     @contracts = @contracts & Client.where(:id => params[:client_id]) if params[:client_id]
+    @contracts = @contracts.find_all {|contract| contract.balance <= 0} if params[:complete]
+    @contracts = @contracts.find_all {|contract| contract.balance > 0} if params[:incomplete]
   end
 
   def new
