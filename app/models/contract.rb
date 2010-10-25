@@ -11,7 +11,7 @@ class Contract < ActiveRecord::Base
   # Scopes
   ########
   
-  default_scope :order => :issued_on
+  default_scope :order => "issued_on desc"
   
   # Instance methods
   ##################
