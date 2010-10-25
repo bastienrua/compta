@@ -15,7 +15,7 @@
     
   - @invoice.lines.each do |line|
     %tr
-      %td= link_to line.contract.title, edit_contract_path(line.contract)
+      %td= invoice_line_contract_link(line)
       %td= line.description
       %td= number_to_currency line.amount_excl_vat, :unit => "€"
       %td= link_to "Modifier", edit_invoice_line_path(@invoice, line)
