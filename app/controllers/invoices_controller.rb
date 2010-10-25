@@ -9,8 +9,9 @@ class InvoicesController < ApplicationController
   #########
   
   def index
-    @invoices = Invoice.includes(:client)
+    @invoices = Invoice.includes(:client, :lines)
     @invoices = @invoices & Client.where(:id => params[:client_id]) if params[:client_id]
+    @invoices = @invoices & InvoiceLine.where(:contract_id => params[:contract_id]) if params[:contract_id]
     @invoices = @invoices.where(:invoiced_on => (Date.parse(params[:from])..Date.parse(params[:to]))) if params[:from]
   end
   
