@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   # Filters
   #########
   
-  before_filter :get_record, :only => [:edit, :update]
+  before_filter :get_record, :only => [:update]
   
   # Actions
   #########
@@ -17,6 +17,10 @@ class InvoicesController < ApplicationController
   
   def new
     @invoice = Invoice.new
+  end
+  
+  def edit
+    @invoice = Invoice.where(:id => params[:id]).includes(:lines => :contract).first
   end
   
   def create
