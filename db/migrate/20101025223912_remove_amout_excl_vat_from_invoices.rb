@@ -3,7 +3,7 @@ class RemoveAmoutExclVatFromInvoices < ActiveRecord::Migration
     
     Invoice.all.each do |invoice|
       invoice.lines.create(
-        :amount_excl_vat => invoice.amount_excl_vat,
+        :amount_excl_vat => invoice.read_attribute(:amount_excl_vat),
         :contract_id => invoice.contract_id
       )
     end
