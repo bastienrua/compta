@@ -1,0 +1,9 @@
+%h1 Nouvelle ligne de facture
+
+= semantic_form_for @invoice_line do |f|
+  = f.inputs do
+    = f.input :contract
+    = f.input :description
+    = f.input :amount_excl_vat
+    
+  = f.buttons

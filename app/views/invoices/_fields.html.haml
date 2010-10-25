@@ -5,3 +5,19 @@
   = f.input:amount_excl_vat
   = f.input :vat, :as => :select, :collection => [["19,6%", "0.196"]], :include_blank => false
   = f.input :invoiced_on
+  
+%h2 Lignes de factures
+
+%table
+  %tr
+    %th Contrat
+    %th Description
+    %th Montant HT
+    
+  - @invoice.lines.each do |line|
+    %tr
+      %td contract
+      %td= line.description
+      %td= number_to_currency line.amount_excl_vat, :unit => "€"
+      
+= link_to "Nouvelle ligne de facture", new_invoice_line_path(@invoice)

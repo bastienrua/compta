@@ -3,7 +3,9 @@ Compta::Application.routes.draw do
   resources :contracts do
     resources :invoices
   end
-  resources :invoices
+  resources :invoices do
+    resources :lines, :controller => "InvoiceLines"
+  end
   resources :clients do
     resources :contracts
     resources :invoices
