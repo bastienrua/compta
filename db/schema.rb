@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,19 +14,19 @@
 ActiveRecord::Schema.define(:version => 20101025223912) do
 
   create_table "clients", :force => true do |t|
-    t.string    "name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contracts", :force => true do |t|
-    t.integer   "client_id"
-    t.decimal   "amount_excl_vat"
-    t.decimal   "vat"
-    t.date      "issued_on"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "title"
+    t.integer  "client_id"
+    t.decimal  "amount_excl_vat"
+    t.decimal  "vat"
+    t.date     "issued_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
   end
 
   add_index "contracts", ["client_id"], :name => "index_contracts_on_client_id"
