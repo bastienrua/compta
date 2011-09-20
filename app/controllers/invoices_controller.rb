@@ -17,26 +17,26 @@ class InvoicesController < ApplicationController
   
   def new
     @invoice = Invoice.new
-    if !Invoice.all.empty?
-      if Invoice.last.number[1,2] == Date.current.year.to_s[2,3]
-        number = Invoice.last.number.gsub("F#{Date.current.year.to_s[2,3]}", "").to_i
-        number += 1
+    
+    current_year_2_digits = Date.current.year.to_s[2,3]
+    last_invoice = Invoice.last
+    
+    number_if_first_in_year = "F" + current_year_2_digits + "001"
+    
+    @invoice.number = unless Invoice.count.zero?
+      
+      # if there is at least one invoices in the DB
+      if last_invoice.number[1,2] == current_year_2_digits
         
-        last_number = case number
-        when (0...10)
-          last_number = "00#{number}"
-        when (10...100)
-          last_number = "0#{number}"
-        else
-          number.to_s
-        end
-        
-        @invoice.number = "F" + Date.current.year.to_s[2,3] + last_number
+        # if last invoice was numbered this year
+        last_invoice.number.next
       else
-        @invoice.number = "F" + Date.current.year.to_s[2,3] + "001"
+        # if last invoice was numbered last year
+        number_if_first_in_year
       end
     else
-      @invoice.number = "F" + Date.current.year.to_s[2,3] + "001"
+      # if there is are no invoices in the DB
+      number_if_first_in_year
     end
   end
   
@@ -46,7 +46,6 @@ class InvoicesController < ApplicationController
   
   def create
     @invoice = Invoice.new(params[:invoice])
-    
     if @invoice.save
       redirect_to invoices_path
     end
