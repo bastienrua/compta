@@ -10,6 +10,13 @@
 //= require jquery-ui
 //= require_tree .
 
+$.datepicker.setDefaults(
+  $.extend(
+    {'dateFormat':'dd/mm/yy'},
+    $.datepicker.regional['fr']
+  )
+);
+
 $(document).ready(function() { 
   $( ".datepicker" ).datepicker();
 });
