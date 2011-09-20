@@ -2,7 +2,7 @@
   = f.input :client
   = f.input :number
   = f.input :vat, :as => :select, :collection => [["19,6%", "0.196"]], :include_blank => false
-  = text_field_tag :datepicker, nil, :class => "datepicker"
+  = text_field_tag "invoice[invoiced_on]", nil, :class => "datepicker"
 
 %h2 Lignes de factures
 
