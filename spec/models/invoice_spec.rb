@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Invoice do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should fail to save invoice without date" do
+    a = Invoice.new
+    a.should have(1).error_on(:invoiced_on)
+  end
 end

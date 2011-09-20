@@ -16,7 +16,7 @@ group :assets do
 end
 
 group :development do
-#  gem "rspec-rails", "~> 2.0.1"
+  gem "rspec-rails", "~> 2.6.1"
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 

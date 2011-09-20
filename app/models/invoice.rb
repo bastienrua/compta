@@ -2,6 +2,8 @@ require "csv"
 
 class Invoice < ActiveRecord::Base
   
+  validates :invoiced_on, :presence => true
+  
   # Assocations
   #############
   
