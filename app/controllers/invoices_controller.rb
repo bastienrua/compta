@@ -17,28 +17,7 @@ class InvoicesController < ApplicationController
   
   def new
     @invoice = Invoice.new
-    
-    current_year_2_digits = Date.current.year.to_s[2,3]
-    last_invoice = Invoice.last
-    
-    number_if_first_in_year = "F" + current_year_2_digits + "001"
-    
-    @invoice.number = unless Invoice.count.zero?
-      
-      # if there is at least one invoices in the DB
-      if last_invoice.number[1,2] == current_year_2_digits
-        
-        # if last invoice was numbered this year
-        last_invoice.number.next
-      else
-        # if last invoice was numbered last year
-        number_if_first_in_year
-      end
-    else
-      # if there is are no invoices in the DB
-      number_if_first_in_year
-    end
-  end
+  end 
   
   def edit
     @invoice = Invoice.where(:id => params[:id]).includes(:lines => :contract).first
