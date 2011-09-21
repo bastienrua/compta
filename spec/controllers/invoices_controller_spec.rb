@@ -12,22 +12,38 @@ describe InvoicesController do
   
   describe "GET new" do
     
+    let(:my_var) { "foo" }
+    
+    subject do
+      get 'new'
+      assigns
+    end
+    
     it "set @invoices with on invoice with number F11001" do
-      get 'new'
-      assigns["invoice"].number.should == "F11001"
+      subject["invoice"].number.should == "F11001"
     end
     
-    it "should set @invoices with number F11002" do
-      i = Invoice.create! :invoiced_on => Date.today, :number => "F11001"
-      get 'new'
-      assigns["invoice"].number.should == "F11002"
+    context "when 1 invoice exists on the same year" do
+      
+      before do
+        Invoice.create! :invoiced_on => Date.today, :number => "F11001"
+      end
+      
+      it "should set @invoices with number F11002" do
+        subject["invoice"].number.should == "F11002"
+      end
     end
     
-    it "should set @invoices with number F11001" do
-      i = Invoice.create! :invoiced_on => Date.today.prev_year, :number => "F10218"
-      get 'new'
-      assigns["invoice"].number.should == "F11001"
+    context "when 1 invoice exists on last year" do
+      
+      before {Invoice.create! :invoiced_on => Date.today, :number => "F10218"}
+
+        it "should set @invoices with number F11001" do
+          subject["invoice"].number.should == "F11001"
+        end
+
     end
+    
   end
   
 end
