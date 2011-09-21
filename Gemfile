@@ -26,4 +26,5 @@ end
 
 group :test do
   gem 'spork', '~> 0.9.0.rc'
+  gem 'factory_girl_rails'
 end

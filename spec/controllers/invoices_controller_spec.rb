@@ -25,9 +25,7 @@ describe InvoicesController do
     
     context "when 1 invoice exists on the same year" do
       
-      before do
-        Invoice.create! :invoiced_on => Date.today, :number => "F11001"
-      end
+      before { Factory.create(:invoice, :number => "F11001") }
       
       it "should set @invoices with number F11002" do
         subject["invoice"].number.should == "F11002"
@@ -36,7 +34,7 @@ describe InvoicesController do
     
     context "when 1 invoice exists on last year" do
       
-      before {Invoice.create! :invoiced_on => Date.today, :number => "F10218"}
+      before {Factory.create(:invoice, :number => "F10218")}
 
         it "should set @invoices with number F11001" do
           subject["invoice"].number.should == "F11001"
